@@ -7,6 +7,7 @@ const PostPage = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
+  const [upvoted, setUpvoted] = useState(false);
 
   useEffect(() => {
     const fetchPostAndComments = async () => {
@@ -79,6 +80,8 @@ const PostPage = () => {
         <h1>{post.title}</h1>
         <p>{post.content}</p>
         {post.image_url && <img src={post.image_url} alt="Post Image" />}
+        <p>Upvote: {post.upvotes_count}</p>
+        <button onClick={handleUpvote} disabled={upvoted}>Upvote</button>
         <h2>Comments</h2>
         <ul>
           {comments.map((comment) => (
@@ -92,7 +95,6 @@ const PostPage = () => {
         {/* Render the Comments component */}
         <Comments postId={postId} />
       </div>
-      <button onClick={handleUpvote}>Upvote</button>
     </>
   );
 };
