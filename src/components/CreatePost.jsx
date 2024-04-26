@@ -25,6 +25,8 @@ const CreatePost = () => {
           setTitle('');
           setContent('');
           setImageUrl('');
+
+          window.location = "/";
         } catch (error) {
           console.error('Error adding new post:', error.message);
           // Handle error, display error message to the user

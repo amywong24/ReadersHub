@@ -6,31 +6,33 @@ const Comments = ({ postId, onCommentSubmit }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
-      // Send a POST request to Supabase to insert a new comment
       const { data, error } = await supabase.from('comments').insert([
         { post_id: postId, content }
       ]);
-
+  
       if (error) {
         throw error;
       }
-
-      console.log('New comment added:', data[0]);
-
-      // Clear form field after successful submission
-      setContent('');
-
-      // Call the callback function passed from the parent component
-      if (onCommentSubmit) {
-        onCommentSubmit();
+  
+      if (data && data.length > 0) {
+        console.log('New comment added:', data[0]);
+        setContent('');
+  
+        // Call the callback function passed from the parent component
+        if (onCommentSubmit) {
+          onCommentSubmit(data[0]); // Pass the new comment back to the parent
+        }
+      } else {
+        throw new Error("No data returned after inserting comment");
       }
     } catch (error) {
       console.error('Error adding new comment:', error.message);
       // Handle error, display error message to the user
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>

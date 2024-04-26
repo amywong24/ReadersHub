@@ -111,7 +111,11 @@ const PostPage = () => {
     } catch (error) {
       console.error('Error deleting post:', error.message);
     }
-  };  
+  };
+
+  const onCommentSubmit = (newComment) => {
+    setComments(prevComments => [...prevComments, newComment]);
+  };
 
   if (!post) {
     return <div>Loading...</div>;
@@ -160,7 +164,7 @@ const PostPage = () => {
         </ul>
 
         {/* Render the Comments component */}
-        <Comments postId={postId} />
+        <Comments postId={postId} onCommentSubmit={onCommentSubmit} />
       </div>
     </>
   );
