@@ -111,9 +111,9 @@ const PostPage = () => {
   const addComments = () => {
     console.log(comments);
     return (
-      <ul>
+      <ul className='comments-list'>
         {comments.map((comment) => (
-          <li key={comment.id}>
+          <li key={comment.id} className='comment-item'>
             <p>{comment.content}</p>
           </li>
         ))}
@@ -127,7 +127,7 @@ const PostPage = () => {
 
   return (
     <>
-      <div>
+      <div className='post-box'>
         <h1>{post.title}</h1>
         <p>{post.content}</p>
         {post.image_url && <img src={post.image_url} alt="Post Image" />}

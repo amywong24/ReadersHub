@@ -2,9 +2,9 @@
 
 Submitted by: **Amy Wong**
 
-This web app: **insert description**
+This web app: **ReadersHub is a book forum site where everyone can talk about the books they enjoyed reading and get recommendations.**
 
-Time spent: **X** hours spent in total
+Time spent: **46** hours spent in total
 
 ## Required Features
 
@@ -52,7 +52,7 @@ GIF created with LICEcap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The major challenge would be making sure that after a user created a post, it would redirect to the home page. It took a lot of debugging to get it figured out. I wasn't able to get the comments site to refresh after a user adds a comment on a post. For the most part, I found some enjoyment working on it.
 
 ## License
 

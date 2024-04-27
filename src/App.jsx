@@ -9,6 +9,7 @@ function App() {
   return (
     <div className='App'>
       <div className='nav'>
+        <h1 className='website-title'>ReadersHub</h1>
         <Link to="/">
           <p className='header'>Home</p>
         </Link>

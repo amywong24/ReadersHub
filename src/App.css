@@ -1,3 +1,110 @@
 .nav {
     background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.home-posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.home-post {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #38b4ed;
+    color: black;
+    font-size: 60px;
+    max-width: 700px;
+    /* Change width to max-width */
+    width: 100%;
+    /* Set width to 100% */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+}
+
+.website-title {
+    color: black;
+    font-size: 50px;
+    margin: 0;
+}
+
+.header {
+    margin-left: 20px;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.filter-container label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.filter-container select,
+.filter-container input[type="text"] {
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.home-post h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.home-post p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #38b4ed;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2c88bf;
 }

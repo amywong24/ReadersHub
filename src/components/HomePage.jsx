@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '/client';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
-  const [sortBy, setSortBy] =useState("created_at");
+  const [sortBy, setSortBy] = useState("created_at");
   const [searchQuery, setSearchQuery] = useState("");
 
   const fetchPosts = async () => {
@@ -49,29 +49,30 @@ const HomePage = () => {
   }, [sortBy, searchQuery]); // Fetch posts whenever sortBy or searchQuery changes
 
   return (
-    <div>
+    <div className='home-posts-container'>
       <h1>Home Feed</h1>
-      {/* Render sort and search controls */}
-      <div>
-        <label htmlFor="sortBy">Sort By:</label>
-        <select id="sortBy" value={sortBy} onChange={handleSortChange}>
-          <option value="created_at">Created At</option>
-          <option value="upvotes_count">Upvotes Count</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="searchQuery">Search:</label>
-        <input
-          type="text"
-          id="searchQuery"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search by title or content"
-        />
+      <div className='filter-container'>
+        <div>
+          <label htmlFor="sortBy">Sort By:</label>
+          <select id="sortBy" value={sortBy} onChange={handleSortChange}>
+            <option value="created_at">Created At</option>
+            <option value="upvotes_count">Upvotes Count</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="searchQuery">Search:</label>
+          <input
+            type="text"
+            id="searchQuery"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Search by title or content"
+          />
+        </div>
       </div>
       {/* Render posts */}
       {posts.map((post) => (
-        <div key={post.id}>
+        <div key={post.id} className='home-post'>
           <Link to={`/post/${post.id}`}>
             <h2>{post.title}</h2>
           </Link>
