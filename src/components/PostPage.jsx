@@ -137,20 +137,26 @@ const PostPage = () => {
         <button onClick={handleDelete}>Delete Post</button>
 
         {editMode && (
-          <div>
+          <div style={{ marginTop: '20px' }}>
             <input
               type="text"
               value={editedTitle}
+              placeholder='Title'
               onChange={e => setEditedTitle(e.target.value)}
+              style={{ marginRight: '10px' }}
             />
             <textarea
               value={editedContent}
               onChange={e => setEditedContent(e.target.value)}
+              placeholder='Content'
+              style={{ marginRight: '10px', minHeight: '100px' }}
             />
             <input
               type="text"
               value={editedImageUrl}
+              placeholder='ImageURL'
               onChange={e => setEditedImageUrl(e.target.value)}
+              style={{ marginRight: '10px' }}
             />
             <button onClick={handleEdit}>Update Post</button>
             <button onClick={() => setEditMode(false)}>Cancel</button>
