@@ -24,10 +24,6 @@ const PostPage = () => {
           .eq('id', postId)
           .single();
 
-        if (postError) {
-          throw postError;
-        }
-
         setPost(postData);
 
         // Fetch comments related to the post
@@ -36,11 +32,9 @@ const PostPage = () => {
           .select('*')
           .eq('post_id', postId);
 
-        if (commentError) {
-          throw commentError;
-        }
-
-        setComments(commentData || []);
+          console.log("id:", comments);
+        setComments(commentData || []);                          
+        console.log("id:", comments);
       } catch (error) {
         console.error('Error fetching post and comments:', error.message);
         // Handle error, display error message to the user
@@ -82,13 +76,9 @@ const PostPage = () => {
         .update({ title: editedTitle, content: editedContent, image_url: editedImageUrl })
         .eq('id', postId);
 
-      if (error) {
-        throw error;
-      }
-
-      console.log('Post updated:', data);
-      setPost(data[0]);
+      setPost(data);
       setEditMode(false);  // Exit edit mode after update
+      window.location.href = '/';
     } catch (error) {
       console.error('Error updating post:', error.message);
     }
@@ -100,11 +90,11 @@ const PostPage = () => {
         .from('posts')
         .delete()
         .eq('id', postId);
-  
+
       if (error) {
         throw error;
       }
-  
+
       console.log('Post deleted:', data);
       // Redirect to home page after deletion
       window.location.href = '/';
@@ -114,7 +104,21 @@ const PostPage = () => {
   };
 
   const onCommentSubmit = (newComment) => {
+    window.location.href = "/post/:postId";
     setComments(prevComments => [...prevComments, newComment]);
+  };
+
+  const addComments = () => {
+    console.log(comments);
+    return (
+      <ul>
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            <p>{comment.content}</p>
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   if (!post) {
@@ -152,19 +156,12 @@ const PostPage = () => {
             <button onClick={() => setEditMode(false)}>Cancel</button>
           </div>
         )}
-        
+
         <h2>Comments</h2>
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment.id}>
-              <p>{comment.content}</p>
-              {/* Display other comment details as needed */}
-            </li>
-          ))}
-        </ul>
+        {addComments()}
 
         {/* Render the Comments component */}
-        <Comments postId={postId} onCommentSubmit={onCommentSubmit} />
+        <Comments postId={postId} onCommentSubmit={onCommentSubmit} addComments={addComments}/>
       </div>
     </>
   );

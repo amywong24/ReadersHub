@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '/client';
 
-const Comments = ({ postId, onCommentSubmit }) => {
+const Comments = ({ postId, onCommentSubmit, addComments }) => {
   const [content, setContent] = useState('');
 
   const handleSubmit = async (event) => {
@@ -12,20 +12,14 @@ const Comments = ({ postId, onCommentSubmit }) => {
         { post_id: postId, content }
       ]);
   
-      if (error) {
-        throw error;
-      }
-  
       if (data && data.length > 0) {
-        console.log('New comment added:', data[0]);
+        console.log('New comment added:', data);
         setContent('');
   
         // Call the callback function passed from the parent component
         if (onCommentSubmit) {
-          onCommentSubmit(data[0]); // Pass the new comment back to the parent
+          onCommentSubmit(data); // Pass the new comment back to the parent
         }
-      } else {
-        throw new Error("No data returned after inserting comment");
       }
     } catch (error) {
       console.error('Error adding new comment:', error.message);
@@ -42,7 +36,7 @@ const Comments = ({ postId, onCommentSubmit }) => {
         onChange={(e) => setContent(e.target.value)}
         required
       />
-      <button type="submit">Submit Comment</button>
+      <button type="submit" onClick={addComments}>Submit Comment</button>
     </form>
   );
 };
