@@ -1,9 +1,25 @@
 .nav {
     background-color: aquamarine;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    display: flex;
+}
+
+.website-title {
+    color: black;
+    font-size: 50px;
+    margin: 0;
+}
+
+.header {
+    margin-left: 20px;
+}
+
+.website-links {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    font-size: 30px;
 }
 
 .comments-list {
@@ -40,10 +56,6 @@
     color: black;
     font-size: 50px;
     margin: 0;
-}
-
-.header {
-    margin-left: 20px;
 }
 
 .filter-container {

@@ -10,12 +10,14 @@ function App() {
     <div className='App'>
       <div className='nav'>
         <h1 className='website-title'>ReadersHub</h1>
-        <Link to="/">
-          <p className='header'>Home</p>
-        </Link>
-        <Link to="/create">
-          <p className='header'>Create New Post</p>
-        </Link>
+        <div className='website-links'>
+          <Link to="/">
+            <p className='header'>Home</p>
+          </Link>
+          <Link to="/create">
+            <p className='header'>Create New Post</p>
+          </Link>
+        </div>
       </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
