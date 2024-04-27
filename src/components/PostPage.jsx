@@ -144,6 +144,7 @@ const PostPage = () => {
               placeholder='Title'
               onChange={e => setEditedTitle(e.target.value)}
               style={{ marginRight: '10px' }}
+              required
             />
             <textarea
               value={editedContent}
