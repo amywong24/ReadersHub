@@ -3,6 +3,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import CreatePost from './components/CreatePost';
 import PostPage from './components/PostPage';
+import './App.css'
 
 function App() {
   return (
