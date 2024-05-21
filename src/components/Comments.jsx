@@ -6,19 +6,19 @@ const Comments = ({ postId, onCommentSubmit, addComments }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const { data, error } = await supabase.from('comments').insert([
         { post_id: postId, content }
       ]);
-  
+
       if (data && data.length > 0) {
         console.log('New comment added:', data);
         setContent('');
-  
+
         // Call the callback function passed from the parent component
         if (onCommentSubmit) {
-          onCommentSubmit(data); // Pass the new comment back to the parent
+          onCommentSubmit(data[0]); // Pass the new comment back to the parent
         }
       }
     } catch (error) {

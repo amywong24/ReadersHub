@@ -104,7 +104,6 @@ const PostPage = () => {
   };
 
   const onCommentSubmit = (newComment) => {
-    window.location.href = "/post/:postId";
     setComments(prevComments => [...prevComments, newComment]);
   };
 
